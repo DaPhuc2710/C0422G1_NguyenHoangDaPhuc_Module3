@@ -97,6 +97,20 @@ FROM
     product p ON p.p_ID = od.p_ID
 WHERE
     odQTY * p_price IS NOT NULL
+    
+    -- Cách khác 
+  --  SELECT 
+  --  o.o_ID, o.o_date, sum((odQTY * p_price)) AS o_total_price
+-- FROM
+   -- `order` o
+     --   JOIN
+   -- order_detail od ON o.o_ID = od.o_ID
+    --    JOIN
+   -- product p ON p.p_ID = od.p_ID
+-- on od.p_ID =p.p_ID
+   -- group by o.o_ID // nhóm lại
+ 
+    
  
  
  
