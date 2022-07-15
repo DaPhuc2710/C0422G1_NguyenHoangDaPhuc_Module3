@@ -67,8 +67,8 @@ CREATE TABLE order_detail (
 SELECT 
     o_ID, o_date, o_total_price
 FROM
-    `order` o;
- -- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách
+    `order` ;
+    -- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách
  SELECT c.c_name,p.p_name  
  FROM customer c 
  join 
@@ -87,28 +87,17 @@ FROM
  
  -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
  -- (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn. 
-SELECT 
-    o.o_ID, o.o_date, odQTY * p_price AS o_total_price
-FROM
+
+    SELECT 
+    o.o_ID, o.o_date, sum((odQTY * p_price)) AS o_total_price
+ FROM
     `order` o
         JOIN
     order_detail od ON o.o_ID = od.o_ID
-        JOIN
+       JOIN
     product p ON p.p_ID = od.p_ID
-WHERE
-    odQTY * p_price IS NOT NULL
-    
-    -- Cách khác 
-  --  SELECT 
-  --  o.o_ID, o.o_date, sum((odQTY * p_price)) AS o_total_price
--- FROM
-   -- `order` o
-     --   JOIN
-   -- order_detail od ON o.o_ID = od.o_ID
-    --    JOIN
-   -- product p ON p.p_ID = od.p_ID
--- on od.p_ID =p.p_ID
-   -- group by o.o_ID // nhóm lại
+
+    group by o.o_ID ;
  
     
  
