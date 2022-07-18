@@ -67,15 +67,15 @@ CREATE TABLE order_detail (
 SELECT 
     o_ID, o_date, o_total_price
 FROM
-    `order` ;
+    `order`;
     -- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách
  SELECT c.c_name,p.p_name  
  FROM customer c 
- join 
+ inner join 
  `order` o on c.c_ID=o.c_ID
- join 
+inner join 
  order_detail od on o.o_ID= od.o_ID
- join 
+inner join 
  product p on p.p_ID= od.p_ID;
  
  -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
@@ -92,9 +92,9 @@ FROM
     o.o_ID, o.o_date, sum((odQTY * p_price)) AS o_total_price
  FROM
     `order` o
-        JOIN
+       inner  JOIN
     order_detail od ON o.o_ID = od.o_ID
-       JOIN
+       inner JOIN
     product p ON p.p_ID = od.p_ID
 
     group by o.o_ID ;

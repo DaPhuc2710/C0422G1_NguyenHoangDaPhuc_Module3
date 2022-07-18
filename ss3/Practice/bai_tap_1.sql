@@ -27,7 +27,8 @@ CREATE TABLE student (
 );
  
  insert into student (student_name,address,phone,`status`,class_ID) 
- values("Hùng","Hà Nội","0912113113",1,1),
+ values
+ ("Hùng","Hà Nội","0912113113",1,1),
  ("Hoa","Hải Phòng",null,1,1),
  ("mạnh","HCM","0123123123",0,2);
  
@@ -58,7 +59,8 @@ CREATE TABLE student (
  values(1,1,8,1),
  (1,2,10,2),
  (2,1,12,1);
-
+ 
+-- Phần thực hành
  -- hiển thị danh sách tất cả học viên
  select * from student;
  
@@ -72,7 +74,7 @@ CREATE TABLE student (
  select s.student_ID,s. student_name ,c.class_name 
  from student s join class c
  on s.class_ID= c.class_ID
- where c.class_name="a1";
+ where c.class_name like "a1";
  
  -- Hiển thị điểm môn CF của các học viên 
  select s.student_ID, s.student_name, sub.sub_name, m.mark
@@ -80,17 +82,21 @@ CREATE TABLE student (
  join `subject` sub on m.sub_ID=sub.sub_ID
  where sub.sub_name="CF";
  
+ -- Phần bài tập 1
  -- hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
  select  * 
- from student s where s.student_name like "H%";
+ from student s 
+ where s.student_name like "H%";
  
  -- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
  select *
- from class c where month(c.start_date)=12;
+ from class c 
+ where month(c.start_date)=12;
  
  -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
  select *
- from `subject` sub where sub.credit between 3 and 5;
+ from `subject` sub 
+ where sub.credit between 3 and 5;
  
  -- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2.
 set sql_safe_updates = 0;
@@ -100,3 +106,15 @@ where s.student_name= "Hung";
 set sql_safe_updates = 1;
 select *
 from student;
+-- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
+select
+s.student_name,
+sub.sub_name,
+m.mark
+from student s
+inner join 
+mark m on s.student_ID = m.student_ID
+inner join 
+`subject` sub on m.sub_ID = sub.sub_ID
+order by m.mark desc,
+ s.student_name asc;
