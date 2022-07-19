@@ -445,20 +445,21 @@ WHERE
                 OR YEAR(hd.ngay_ket_thuc) = 2021)))
 GROUP BY hd.ma_hop_dong;
  -- Câu 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. 
- SELECT 
+SELECT 
     dvdk.ma_dich_vu_di_kem,
     dvdk.ten_dich_vu_di_kem,
-    hdct.so_luong 
+    SUM(hdct.so_luong) AS so_luong_dich_vu_di_kem
 FROM
     dich_vu_di_kem dvdk
         JOIN
     hop_dong_chi_tiet hdct ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
-WHERE
-    hdct.so_luong = (SELECT 
-            MAX(hdct.so_luong)
-        FROM
-            hop_dong_chi_tiet hdct)
-GROUP BY dvdk.ma_dich_vu_di_kem; 
+GROUP BY dvdk.ma_dich_vu_di_kem
+HAVING so_luong_dich_vu_di_kem >= ALL (SELECT 
+        SUM(hdct.so_luong)
+    FROM
+        hop_dong_chi_tiet hdct
+    GROUP BY hdct.ma_dich_vu_di_kem)
+ORDER BY hdct.ma_dich_vu_di_kem; 
  -- 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
  -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung 
 SELECT 
@@ -482,15 +483,24 @@ order by hd.ma_hop_dong;
 
 -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
 -- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
-select 
-nv.ma_nhan_vien, nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi 
-from nhan_vien nv
-join trinh_do td on nv.ma_trinh_do = td.ma_trinh_do
-join bo_phan bp on nv.ma_bo_phan = bp.ma_bo_phan
-join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
-group by nv.ma_nhan_vien 
-having count(hd.ma_nhan_vien) <=3
-order by hd.ma_nhan_vien;
+SELECT 
+    nv.ma_nhan_vien,
+    nv.ho_ten,
+    td.ten_trinh_do,
+    bp.ten_bo_phan,
+    nv.so_dien_thoai,
+    nv.dia_chi
+FROM
+    nhan_vien nv
+        JOIN
+    trinh_do td ON nv.ma_trinh_do = td.ma_trinh_do
+        JOIN
+    bo_phan bp ON nv.ma_bo_phan = bp.ma_bo_phan
+        JOIN
+    hop_dong hd ON nv.ma_nhan_vien = hd.ma_nhan_vien
+GROUP BY nv.ma_nhan_vien
+HAVING COUNT(hd.ma_nhan_vien) <= 3
+ORDER BY hd.ma_nhan_vien;
 
 
 
