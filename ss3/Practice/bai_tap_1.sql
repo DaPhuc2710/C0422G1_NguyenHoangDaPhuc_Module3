@@ -32,12 +32,12 @@ CREATE TABLE student (
  ("Hoa","Hải Phòng",null,1,1),
  ("mạnh","HCM","0123123123",0,2);
  
- create table `subject`(
- sub_ID int auto_increment primary key,
- sub_name varchar(20),
- credit int,
- `status` INT
- );
+CREATE TABLE `subject` (
+    sub_ID INT AUTO_INCREMENT PRIMARY KEY,
+    sub_name VARCHAR(20),
+    credit INT,
+    `status` INT
+);
  
  insert into `subject` (sub_name,credit,`status`) 
  values("Cf",5,1),
@@ -45,15 +45,17 @@ CREATE TABLE student (
  ("hdj",5,1),
  ("rdbms",10,1);
  
- creaTE TAble mark(
- mark_Id int primary key auto_increment,
- sub_id int NOT Null ,
- student_ID int NOT Null ,
- mark int ,
- examtimes int,
- foreign key (sub_id) references `subject`(sub_ID),
- foreign key (student_iD) references student(student_iD)
- );
+ CREATE TABLE mark (
+    mark_Id INT PRIMARY KEY AUTO_INCREMENT,
+    sub_id INT NOT NULL,
+    student_ID INT NOT NULL,
+    mark INT,
+    examtimes INT,
+    FOREIGN KEY (sub_id)
+        REFERENCES `subject` (sub_ID),
+    FOREIGN KEY (student_iD)
+        REFERENCES student (student_iD)
+);
  
  insert into mark (sub_ID,student_iD,mark,examtimes) 
  values(1,1,8,1),
@@ -62,59 +64,93 @@ CREATE TABLE student (
  
 -- Phần thực hành
  -- hiển thị danh sách tất cả học viên
- select * from student;
+ SELECT 
+    *
+FROM
+    student;
  
  -- Hiển thị danh sách học viên đang theo học
- select * from student where status = true; 
+SELECT 
+    *
+FROM
+    student
+WHERE
+    status = TRUE; 
  
  -- Hiển hị danh sách các môn học có thời gian học nhỏ hơn 10
- select * from `subject` where credit <10;
+SELECT 
+    *
+FROM
+    `subject`
+WHERE
+    credit < 10;
  
  -- Hiển thị danh sách học viên lớp A1
- select s.student_ID,s. student_name ,c.class_name 
- from student s join class c
- on s.class_ID= c.class_ID
- where c.class_name like "a1";
+SELECT 
+    s.student_ID, s.student_name, c.class_name
+FROM
+    student s
+        JOIN
+    class c ON s.class_ID = c.class_ID
+WHERE
+    c.class_name LIKE 'a1';
  
  -- Hiển thị điểm môn CF của các học viên 
- select s.student_ID, s.student_name, sub.sub_name, m.mark
- from student s join mark m on s.student_ID=m.student_Id 
- join `subject` sub on m.sub_ID=sub.sub_ID
- where sub.sub_name="CF";
+SELECT 
+    s.student_ID, s.student_name, sub.sub_name, m.mark
+FROM
+    student s
+        JOIN
+    mark m ON s.student_ID = m.student_Id
+        JOIN
+    `subject` sub ON m.sub_ID = sub.sub_ID
+WHERE
+    sub.sub_name = 'CF';
  
  -- Phần bài tập 1
  -- hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
- select  * 
- from student s 
- where s.student_name like "H%";
+ SELECT 
+    *
+FROM
+    student s
+WHERE
+    s.student_name LIKE 'H%';
  
  -- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
- select *
- from class c 
- where month(c.start_date)=12;
+SELECT 
+    *
+FROM
+    class c
+WHERE
+    MONTH(c.start_date) = 12;
  
  -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
- select *
- from `subject` sub 
- where sub.credit between 3 and 5;
+ SELECT 
+    *
+FROM
+    `subject` sub
+WHERE
+    sub.credit BETWEEN 3 AND 5;
  
  -- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2.
 set sql_safe_updates = 0;
-update student s 
-set s.class_id =2
-where s.student_name= "Hung";
+UPDATE student s 
+SET 
+    s.class_id = 2
+WHERE
+    s.student_name = 'Hung';
 set sql_safe_updates = 1;
-select *
-from student;
+SELECT 
+    *
+FROM
+    student;
 -- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
-select
-s.student_name,
-sub.sub_name,
-m.mark
-from student s
-inner join 
-mark m on s.student_ID = m.student_ID
-inner join 
-`subject` sub on m.sub_ID = sub.sub_ID
-order by m.mark desc,
- s.student_name asc;
+SELECT 
+    s.student_name, sub.sub_name, m.mark
+FROM
+    student s
+        INNER JOIN
+    mark m ON s.student_ID = m.student_ID
+        INNER JOIN
+    `subject` sub ON m.sub_ID = sub.sub_ID
+ORDER BY m.mark DESC , s.student_name ASC;
