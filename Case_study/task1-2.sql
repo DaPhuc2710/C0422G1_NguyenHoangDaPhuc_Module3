@@ -57,6 +57,7 @@ CREATE TABLE nhan_vien (
         REFERENCES case_study.trinh_do (ma_trinh_do),
     FOREIGN KEY (ma_bo_phan)
         REFERENCES case_study.bo_phan (ma_bo_phan)
+	on delete set null
 );
 
 CREATE TABLE khach_hang (
@@ -71,6 +72,7 @@ CREATE TABLE khach_hang (
     dia_chi VARCHAR(45),
     FOREIGN KEY (ma_loai_khach)
         REFERENCES case_study.loai_khach (ma_loai_khach)
+	on delete set null    
 );
 
 CREATE TABLE dich_vu (
@@ -90,6 +92,7 @@ CREATE TABLE dich_vu (
         REFERENCES case_study.kieu_thue (ma_kieu_thue),
     FOREIGN KEY (ma_loai_dich_vu)
         REFERENCES case_study.loai_dich_vu (ma_loai_dich_vu)
+	on delete set null
 );
 
 CREATE TABLE hop_dong (
@@ -106,6 +109,7 @@ CREATE TABLE hop_dong (
         REFERENCES case_study.khach_hang (ma_khach_hang),
     FOREIGN KEY (ma_dich_vu)
         REFERENCES case_study.dich_vu (ma_dich_vu)
+    on delete set null    
 );
 
 CREATE TABLE hop_dong_chi_tiet (
@@ -117,6 +121,7 @@ CREATE TABLE hop_dong_chi_tiet (
         REFERENCES case_study.hop_dong (ma_hop_dong),
     FOREIGN KEY (ma_dich_vu_di_kem)
         REFERENCES case_study.dich_vu_di_kem (ma_dich_vu_di_kem)
+    on delete set null    
 );
 
 -- Câu 1 Thêm mới thông tin cho tất cả các bảng có trong CSDL -- 
@@ -478,8 +483,8 @@ FROM
         JOIN
     dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 GROUP BY hdct.ma_dich_vu_di_kem
-having so_lan_su_dung=1
-order by hd.ma_hop_dong;
+HAVING so_lan_su_dung = 1
+ORDER BY hd.ma_hop_dong;
 
 -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
 -- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
@@ -502,9 +507,110 @@ GROUP BY nv.ma_nhan_vien
 HAVING COUNT(hd.ma_nhan_vien) <= 3
 ORDER BY hd.ma_nhan_vien;
 
+-- Câu 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021. --
+set sql_safe_updates = 0;
+DELETE FROM nhan_vien 
+WHERE
+    ma_nhan_vien NOT IN (SELECT 
+        hd.ma_nhan_vien
+    FROM
+        hop_dong hd
+    
+    WHERE
+        YEAR(hd.ngay_lam_hop_dong) BETWEEN 2019 AND 2021);
+set sql_safe_updates = 1;
+SELECT 
+    *
+FROM
+    nhan_vien;
+
+-- Câu 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ. 
+set sql_safe_updates=0;
+UPDATE khach_hang 
+SET 
+    ma_loai_khach = 1;
+where (ma_loai_khach = 2) and (tong_tien = (select temp.tong_tien from(SELECT 
+    kh.ma_khach_hang,
+    (dv.chi_phi_thue + sum(ifnull(hdct.so_luong * dvdk.gia,0)))AS tong_tien
+FROM
+    khach_hang kh
+        LEFT JOIN
+    loai_khach lk ON kh.ma_loai_khach = lk.ma_loai_khach
+        LEFT JOIN
+    hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
+        LEFT JOIN
+    dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+        LEFT JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+        LEFT JOIN
+    dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY kh.ma_khach_hang
+ORDER BY kh.ma_khach_hang) temp);
+set sql_safe_updates=1;
 
 
 
+-- Câu 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+set sql_safe_updates = 0;
+SET FOREIGN_KEY_CHECKS=0;
+DELETE FROM khach_hang 
+WHERE
+    ma_khach_hang IN (SELECT 
+        hd.ma_khach_hang
+    FROM
+        hop_dong hd
+    
+    WHERE
+        YEAR(hd.ngay_lam_hop_dong) < 2021);
+        SET FOREIGN_KEY_CHECKS=1;
+set sql_safe_updates = 1;
+SELECT 
+    *
+FROM
+    khach_hang;
+    
+-- Câu 19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+set sql_safe_updates = 0;
+UPDATE dich_vu_di_kem 
+SET 
+    gia = gia * 2
+WHERE
+    ma_dich_vu_di_kem IN (SELECT 
+            temp.ma_dich_vu_di_kem
+        FROM
+            (SELECT 
+                dvdk.ma_dich_vu_di_kem
+            FROM
+                hop_dong_chi_tiet hdct
+            JOIN hop_dong hd ON hdct.ma_hop_dong = hd.ma_hop_dong
+            JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+            WHERE
+                (YEAR(hd.ngay_lam_hop_dong) = 2020)
+            GROUP BY dvdk.ma_dich_vu_di_kem
+            HAVING (sum(hdct.so_luong) > 10)) temp);  
+set sql_safe_updates = 1;
+select * from dich_vu_di_kem;
+
+-- Câu 20.Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, --
+-- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.--
+
+SELECT 
+    nv.ma_nhan_vien as id ,
+    nv.ho_ten,
+    nv.email,
+    nv.so_dien_thoai,
+    nv.ngay_sinh,
+    nv.dia_chi
+    from nhan_vien nv
+    union all select
+    kh.ma_khach_hang,
+    kh.ho_ten,
+    kh.email,
+    kh.so_dien_thoai,
+    kh.ngay_sinh,
+    kh.dia_chi
+FROM khach_hang kh ;
 
 
     
