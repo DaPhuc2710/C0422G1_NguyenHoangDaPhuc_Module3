@@ -1,0 +1,87 @@
+header {
+    background-color: lightgrey;
+    padding: 10px;
+    border: solid whitesmoke;
+}
+
+nav {
+    background-color: lightgrey;
+    padding: 10px;
+    border: solid whitesmoke;
+    cursor: pointer;
+
+}
+section{
+    background-color: lightgrey;
+    padding: 10px;
+    border: solid whitesmoke;
+}
+footer{
+    background-color: lightgrey;
+    padding: 10px;
+    border: solid whitesmoke;
+    align-items: center;
+    justify-content: center;
+}
+li{
+    list-style: none;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+
+
+.row2 {
+    display: flex; /*khi nao con du dong thi van se dua len tren */
+    flex-wrap: wrap; /*khong du khong gian la xuong hang*/
+}
+
+.col-1 {
+    width: 8.33333%;
+}
+
+.col-2 {
+    width: 16.66667%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33333%;
+}
+
+.col-5 {
+    width: 41.66667%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33333%;
+}
+
+.col-8 {
+    width: 66.66667%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33333%;
+}
+
+.col-11 {
+    width: 91.66667%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
