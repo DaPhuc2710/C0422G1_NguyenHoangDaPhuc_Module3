@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+
+}
+
 header {
     background-color: lightgrey;
     padding: 10px;
@@ -9,13 +14,14 @@ nav {
     padding: 10px;
     border: solid whitesmoke;
     cursor: pointer;
-
+    text-align: center;
 }
 section{
     background-color: lightgrey;
     padding: 10px;
     border: solid whitesmoke;
 }
+
 footer{
     background-color: lightgrey;
     padding: 10px;
@@ -26,9 +32,24 @@ footer{
 li{
     list-style: none;
     text-decoration: none;
+
 }
 ul{
     list-style: none;
+
+}
+.nav-border{
+    text-decoration:none;
+    border-right: 1px solid black;
+}
+a{
+    text-decoration:none;
+}
+section p{
+    text-align: left;
+}
+.P-section{
+    text-align: center;
 }
 
 
