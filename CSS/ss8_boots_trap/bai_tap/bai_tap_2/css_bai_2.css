@@ -1,0 +1,11 @@
+section  a{
+
+    text-align: center;
+    text-decoration: none;
+    color: whitesmoke;
+    cursor: pointer;
+}
+section p{
+    background-color: #0c63e4;
+    text-align: center;
+}
