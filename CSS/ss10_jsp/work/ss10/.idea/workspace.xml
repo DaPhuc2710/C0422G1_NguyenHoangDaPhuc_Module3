@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c4daca1-4aab-4e6f-a815-d2e6c482148a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ss9_web_app/practice/servertime/src/main/java/Servlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss1.Database/Homework/Practice.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2.DesignAndCreate/Practice/thuc_hanh_1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2.DesignAndCreate/Practice/thuc_hanh_2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2.DesignAndCreate/Work/bai_tap_1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss2.DesignAndCreate/Work/bai_tap_2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss3/Practice/bai_tap_1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss3/Work/bai_tap_2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss4.Cac_ham_don_gian/thuc_hanh.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ss5/bai_tap.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2CYrIJTQPFtMmUQU0pe0VaafZTq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c4daca1-4aab-4e6f-a815-d2e6c482148a" name="Changes" comment="" />
+      <created>1658990281215</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658990281215</updated>
+      <workItem from="1658990286656" duration="113000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
