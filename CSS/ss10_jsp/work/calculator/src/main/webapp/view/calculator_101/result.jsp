@@ -11,18 +11,22 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Simple model.Calculator</h1>
-<p>First Operand: <input type="text" name="firstOperand"/></p>
-<p>Operator:
+<h1>Simple model.CalculatorService</h1>
+
+
+<form action="/calculator" method="post">
+    <p>Operator:</p>
+    <p>First Operand:</p> <input type="text" name="firstOperand"/>
     <select name="operator"/>
     <option value="addition">Addition</option>
     <option value="subtraction">Subtraction</option>
     <option value="multiplication">Multiplication</option>
     <option value="division">Division</option>
     </select>
-</p>
-<p>Second Operand:<input type="text" name="secondOperand"/></p>
-<button type="submit">Enter</button>
+<p>Second Operand:</p><input type="text" name="secondOperand"/>
+<input type="submit">Enter</input>
+</form>
 <h1>Result: ${result}</h1>
+<h1>${error}</h1>
 </body>
 </html>
