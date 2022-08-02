@@ -42,6 +42,22 @@ public class ProductServlet extends HttpServlet {
         }
 
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "add":
+                saveFormAdd(request, response);
+                break;
+            case "update":
+                saveFormUpdate(request, response);
+                break;
+        }
+
+    }
 
     private void showFindById(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -132,22 +148,7 @@ public class ProductServlet extends HttpServlet {
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "add":
-                saveFormAdd(request, response);
-                break;
-            case "update":
-                saveFormUpdate(request, response);
-                break;
-        }
 
-    }
 
     private void saveFormUpdate(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));

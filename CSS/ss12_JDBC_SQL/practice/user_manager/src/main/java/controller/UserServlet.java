@@ -85,7 +85,7 @@ public class UserServlet extends HttpServlet {
            requestDispatcher = request.getRequestDispatcher("view/error.jsp");
        } else {
             request.setAttribute("users", usersList);
-           requestDispatcher = request.getRequestDispatcher("view/user/findByCountry.jsp");
+           requestDispatcher = request.getRequestDispatcher("view/user/list.jsp");
        }
        try {
            requestDispatcher.forward(request, response);

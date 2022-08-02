@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Simple model.CalculatorService</h1>
+<h1>Simple service.CalculatorService</h1>
 
 
 <form action="/calculator" method="post">

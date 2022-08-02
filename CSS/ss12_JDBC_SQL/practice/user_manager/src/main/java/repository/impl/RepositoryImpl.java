@@ -17,7 +17,7 @@ public class RepositoryImpl implements IRepository {
     private final String INSERT_INTO = "insert into users (name, email, country)" + "value(?,?,?)";
     private final String SET_USER = "update users set name=?,email=?,country=? where id=?";
     private final String DELETE_FROM = "delete from users where id=?";
-    private final String FIND_COUNTRY = "select * from users where country = ?";
+    private final String FIND_COUNTRY = "select * from users where country like ?";
     private final String SORT_BY_NAME="select * from users order by name";
 
 
@@ -88,7 +88,6 @@ public class RepositoryImpl implements IRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -98,7 +97,7 @@ public class RepositoryImpl implements IRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement=connection.prepareStatement(FIND_COUNTRY);
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1, "%"+country+"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
