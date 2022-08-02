@@ -7,7 +7,9 @@ import service.impl.ServiceImpl;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", urlPatterns = "/users")
@@ -26,16 +28,18 @@ public class UserServlet extends HttpServlet {
                 break;
             case "update": showUpdateUser(request,response);
                 break;
-            case "detele": deleteButton(request,response);
+            case "delete": deleteButton(request,response);
                 break;
-            case "sortByName":
+            case "sortByName":sortByName(request,response);
                 break;
-            case "findByCountry": showFindByCountry(request,response);
-                break;
+          case "findByCountry": showFindByCountry(request,response);
+               break;
             default: showListUser(request,response);
             break;
         }
     }
+
+
     private void showListUser(HttpServletRequest request, HttpServletResponse response) {
         List<Users> users = iService.findAll();
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/user/list.jsp");
@@ -73,30 +77,46 @@ public class UserServlet extends HttpServlet {
         iService.delete(id);
         showListUser(request, response);
     }
-    private void showFindByCountry(HttpServletRequest request, HttpServletResponse response) {
-        String country = request.getParameter("country");
-        List<Users> usersList = iService.findByCountry(country);
+   private void showFindByCountry(HttpServletRequest request, HttpServletResponse response) {
+       String country = request.getParameter("country");
+       List<Users> usersList = iService.findByCountry(country);
+       RequestDispatcher requestDispatcher = null;
+       if (usersList == null) {
+           requestDispatcher = request.getRequestDispatcher("view/error.jsp");
+       } else {
+            request.setAttribute("users", usersList);
+           requestDispatcher = request.getRequestDispatcher("view/user/findByCountry.jsp");
+       }
+       try {
+           requestDispatcher.forward(request, response);
+       } catch (ServletException e) {
+            e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+        }
+    }
+    private void sortByName(HttpServletRequest request, HttpServletResponse response) {
+        List<Users> usersList= iService.sortByName();
         RequestDispatcher requestDispatcher;
-        if (users == null) {
-            requestDispatcher = request.getRequestDispatcher("view/error.jsp");
-        } else {
-            request.setAttribute("users", users);
-            requestDispatcher = request.getRequestDispatcher("view/product/findByCountry.jsp");
+        if (usersList==null){
+             requestDispatcher= request.getRequestDispatcher("view/error.jsp");
+        }else {
+            request.setAttribute("users",usersList);
+            requestDispatcher= request.getRequestDispatcher("view/user/list.jsp");
         }
         try {
-            requestDispatcher.forward(request, response);
+            requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String action = request.getParameter("action");
         if (action == null) {
             action = "";

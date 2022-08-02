@@ -1,17 +1,18 @@
 package repository.impl;
 
 import model.Product;
-import repository.ProductRepository;
+import repository.IProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRepositoryImpl implements ProductRepository {
+
+public class IProductRepositoryImpl implements IProductRepository {
     private static List<Product> productList = new ArrayList<>();
 
     static {
         productList.add(new Product(1, "Coca", 10000, "Loai nho, mau do", "Vn"));
-        productList.add(new Product(2, "Coca", 10000, "Mau trang, khong calo", "My"));
+        productList.add(new Product(2, "Fanta", 10000, "Mau cam, khong calo", "My"));
         productList.add(new Product(3, "Pepsi", 10000, "Loai nho, mau xanh", "Vn"));
         productList.add(new Product(4, "Pepsi", 10000, "Mau den, vi chanh, khong calo", "My"));
     }
@@ -59,12 +60,12 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public Product findByName(String name) {
+    public List<Product> findByName(String name) {
+        List<Product> productList1= new ArrayList<>();
         for (int i = 0; i <productList.size() ; i++) {
-            if (productList.get(i).getName().equals(name)){
-                 return  productList.get(i);
+            if (productList.get(i).getName().toLowerCase().contains(name.toLowerCase())){
+                productList1.add(productList.get(i));
             }
-        }
-        return null;
+        }return productList1;
     }
 }

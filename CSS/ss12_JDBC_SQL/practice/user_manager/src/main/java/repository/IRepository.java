@@ -13,7 +13,7 @@ public interface IRepository {
 
     boolean delete(int id);
 
-    Users findByCountry(String country);
+    List<Users> findByCountry(String country);
 
-    List<Users> sortByName(String name);
+    List<Users> sortByName();
 }

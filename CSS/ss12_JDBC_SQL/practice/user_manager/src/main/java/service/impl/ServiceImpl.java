@@ -31,12 +31,12 @@ public class ServiceImpl implements IService {
     }
 
     @Override
-    public Users findByCountry(String country) {
+    public List<Users> findByCountry(String country) {
         return iRepository.findByCountry(country);
     }
 
     @Override
-    public List<Users> sortByName(String name) {
-        return null;
+    public List<Users> sortByName() {
+        return iRepository.sortByName();
     }
 }

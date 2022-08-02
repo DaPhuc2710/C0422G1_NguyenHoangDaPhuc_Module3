@@ -9,6 +9,6 @@ public interface IService {
     void add(Users user);
     void update(int id, Users user);
     void delete(int id);
-    Users findByCountry(String country);
-    List<Users> sortByName(String name);
+    List<Users> findByCountry(String country);
+    List<Users> sortByName();
 }
