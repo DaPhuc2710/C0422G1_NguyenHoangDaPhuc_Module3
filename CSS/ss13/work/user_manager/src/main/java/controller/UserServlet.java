@@ -28,10 +28,17 @@ public class UserServlet extends HttpServlet {
             case "delete":
                 deleteButton(request, response);
                 break;
+            case "transaction":
+                transactionMethod(request, response);
+                break;
             default:
                 showListUser(request, response);
                 break;
         }
+    }
+
+    private void transactionMethod(HttpServletRequest request, HttpServletResponse response) {
+        iService.addTransaction();
     }
 
     @Override

@@ -10,4 +10,5 @@ public interface IService {
     void update(Users user);
     void delete(int id);
     Users getUserById(int id);
+    String addTransaction();
 }

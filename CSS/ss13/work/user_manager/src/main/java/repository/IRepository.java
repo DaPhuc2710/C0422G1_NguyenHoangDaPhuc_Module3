@@ -13,5 +13,6 @@ public interface IRepository {
     void delete(int id);
 
     Users getUserById(int id);
+    String addTransaction();
 
 }

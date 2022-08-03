@@ -86,4 +86,38 @@ public class RepositoryImpl implements IRepository {
         return users;
     }
 
+    @Override
+    public String addTransaction() {
+        String mess = "adding success";
+        Connection connection = BaseRepository.getConnectDB();
+        PreparedStatement preparedStatement;
+        try {
+            connection.setAutoCommit(false);
+            preparedStatement = connection.prepareStatement("insert into student (id,name, age ) values(?,?,?);");
+            preparedStatement.setInt(1, 3);
+            preparedStatement.setString(2, "Tài");
+            preparedStatement.setInt(3, 11);
+            int affectRow = preparedStatement.executeUpdate();
+
+            preparedStatement = connection.prepareStatement("insert into teacher (id,name, age ) values(?,?,?);");
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setString(2, "Hải");
+            preparedStatement.setInt(3, 40);
+            affectRow += preparedStatement.executeUpdate();
+            if (affectRow == 2) {
+                connection.commit();
+            } else {
+                connection.rollback();
+            }
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+        return mess;
+    }
+
 }

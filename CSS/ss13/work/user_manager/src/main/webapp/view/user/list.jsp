@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>List Page</h2>
+<a href="/users?action=transaction">Transaction</a>
 <table>
     <tr>
         <th>ID</th>

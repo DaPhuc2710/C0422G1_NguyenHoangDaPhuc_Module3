@@ -31,5 +31,10 @@ public class ServiceImpl implements IService {
         return iRepository.getUserById(id);
     }
 
+    @Override
+    public String addTransaction() {
+        return iRepository.addTransaction();
+    }
+
 
 }
