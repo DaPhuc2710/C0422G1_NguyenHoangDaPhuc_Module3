@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="27f55ff7-82c9-4510-a95d-1791667e24ba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/customer/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CustomerTypeTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/FilterUTF8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/ICustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/ICustomerTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/impl/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/impl/CustomerTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/IServiceCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/IServiceCustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/impl/ServiceCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/impl/ServiceCustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/contract/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/contract/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/contract/form.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/contract/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/customer/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/customer/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/customer/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/employee/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/employee/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/employee/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/include/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/services/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/services/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/services/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/view/services/update.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/controller/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/model/customer/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/model/customer/CustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/repository/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/repository/FilterUTF8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/repository/IRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/repository/IRepositoryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/service/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/service/IServiceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/service/impl/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/java/service/impl/ServiceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/customer/delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/customer/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/adding_customer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/adding_employee.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/adding_service.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.rtl.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.rtl.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.esm.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.esm.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.esm.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/bootstrap-5.0.2-dist/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/employee_list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/include/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/include/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/include/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/sean-oulashin-KMn4VEeEPR8-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/service_list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/view/update_service.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/build/libs/furama_case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/build/libs/furama_case_study-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/customer/adding_customer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/customer/adding.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/employee/employee_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/employee/employee_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../furama_case_study/src/main/webapp/view/include/header.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="2CyWUG25PC0mEqtDpp8EBOR5B1v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CODEGYM2\C0422G1_NguyenHoangDaPhuc_Module3\CSS\case_study_furama_101\src\main\webapp" />
+      <recent name="D:\CODEGYM2\C0422G1_NguyenHoangDaPhuc_Module3\CSS\case_study_furama_101\src\main\webapp\view\services" />
+      <recent name="D:\CODEGYM2\C0422G1_NguyenHoangDaPhuc_Module3\CSS\case_study_furama_101\src\main\webapp\view\employee" />
+      <recent name="D:\CODEGYM2\C0422G1_NguyenHoangDaPhuc_Module3\CSS\case_study_furama_101\src\main\webapp\view\customer" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="HOT_SWAP_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="Gradle : org.example : case_study_furama_101-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="43a6508d-8c96-4e91-89d0-4c5735e8b553" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="59699" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : org.example : case_study_furama_101-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="27f55ff7-82c9-4510-a95d-1791667e24ba" name="Changes" comment="" />
+      <created>1659775322191</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659775322191</updated>
+      <workItem from="1659775323990" duration="8170000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repository/impl/CustomerRepository.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/customer/CustomerServlet.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="e" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

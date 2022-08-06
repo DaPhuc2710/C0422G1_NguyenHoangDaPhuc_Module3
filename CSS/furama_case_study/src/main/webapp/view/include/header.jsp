@@ -55,8 +55,8 @@
                                     Customer
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Customer List</a></li>
-                                    <li><a class="dropdown-item" href="#">Adding New Customer</a>
+                                    <li><a class="dropdown-item" href="/view/customer/list.jsp">Customer List</a></li>
+                                    <li><a class="dropdown-item" href="/view/customer/adding.jsp">Adding New Customer</a>
                                     </li>
                                 </ul>
                             </li>

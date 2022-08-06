@@ -13,14 +13,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <style>
-    .boxmodel {
-        margin: 0 auto;
-        width: 800px;
-        border: 10px;
-        padding: 10px;
-        border-color: chartreuse aqua blue blueviolet;
-        border-style: solid;
-    }
+
 
     body {
         background-image: url(view/sean-oulashin-KMn4VEeEPR8-unsplash.jpg);
@@ -41,8 +34,6 @@
             <div class="col-3"></div>
             <div class="col-6">
                 <div class="row">
-                    <div class="col-12"><h1 class="boxmodel text-center" style="color: black">Welcome to Furama
-                        Resort</h1></div>
                     <div>
                         <div id="carouselExampleCaptions" class="carousel slide text-center" data-bs-ride="carousel">
                             <div class="carousel-indicators">
