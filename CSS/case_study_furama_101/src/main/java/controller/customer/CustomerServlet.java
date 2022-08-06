@@ -11,6 +11,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
@@ -24,17 +25,60 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "jhhi":
+            case "add": showFormAdd(request,response);
+                break;
+            case "delete": delete(request,response);
                 break;
             default:
                 showListCustomer(request, response);
         }
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action=request.getParameter("action");
+        if (action==null){
+            action="";
+        }
+        switch (action){
+            case "add": saveAddForm(request,response);
+        }
 
     }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) {
+        int id=Integer.parseInt(request.getParameter("id"));
+        iServiceCustomer.delete(id);
+        showListCustomer(request,response);
+    }
+
+
+
+    private void saveAddForm(HttpServletRequest request, HttpServletResponse response) {
+        String name= request.getParameter("name");
+        String dOfB= request.getParameter("dOfB");
+        boolean gender= Boolean.parseBoolean(request.getParameter("gender"));
+        int CMND= Integer.parseInt(request.getParameter("CMND"));
+        int telephone=Integer.parseInt(request.getParameter("telephone"));
+        String email= request.getParameter("email");
+        int customerCodeType= Integer.parseInt(request.getParameter("type"));
+        String address=request.getParameter("address");
+        iServiceCustomer.add(new Customer(customerCodeType,name,dOfB,gender,CMND,telephone,email,address));
+        showListCustomer(request,response);
+
+    }
+
+    private void showFormAdd(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/add.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void showListCustomer(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customers = iServiceCustomer.findAll();

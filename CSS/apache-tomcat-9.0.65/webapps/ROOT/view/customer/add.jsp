@@ -18,47 +18,47 @@
 </head>
 <body>
 <h1 class="text-center">Thêm khách hàng mới</h1>
-<form class="m-auto w-25">
+<form class="m-auto w-25" method="post" action="/customer?action=add">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Họ tên</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail2" class="form-label">Ngày sinh </label>
-        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+        <input type="date" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="dOfB">
     </div>
     <div class="mb-3">
         <label class="form-label">Giới tính</label>
-        <select>
-            <option>Nam</option>
-            <option>Nữ</option>
+        <select name="gender">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
         </select>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail3" class="form-label">Số CMND </label>
-        <input type="email" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" name="CMND">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail4" class="form-label">Số ĐT </label>
-        <input type="email" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" name="telephone">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail5" class="form-label">Email </label>
-        <input type="email" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" name="email">
     </div>
     <div class="mb-3">
         <label class="form-label">Loại khách </label>
-        <select>
-            <option>Diamond</option>
-            <option>Platinum</option>
-            <option>Gold</option>
-            <option>Silver</option>
-            <option>Member</option>
+        <select name="type">
+            <option value="1">Diamond</option>
+            <option value="2">Platinum</option>
+            <option value="3">Gold</option>
+            <option value="4">Silver</option>
+            <option value="5">Member</option>
         </select>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail6" class="form-label">Địa chỉ </label>
-        <input type="email" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" name="address" >
     </div>
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>

@@ -15,6 +15,7 @@ public class ServiceCustomer implements service.IServiceCustomer {
 
     @Override
     public void add(Customer customer) {
+        repository.add(customer);
 
     }
 
@@ -24,7 +25,8 @@ public class ServiceCustomer implements service.IServiceCustomer {
     }
 
     @Override
-    public void delete(int customerCodeType) {
+    public void delete(int customerId) {
+        repository.delete(customerId);
 
     }
 }
