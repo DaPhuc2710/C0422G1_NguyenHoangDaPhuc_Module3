@@ -71,7 +71,7 @@
                         </button>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="#" role="button">
+                        <a class="btn btn-primary" href="/customer?action=update&id=${customer.customerId}" role="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pen"
                                  viewBox="0 0 16 16">
@@ -92,7 +92,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Xóa Nhân Viên</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>

@@ -20,7 +20,8 @@ public class ServiceCustomer implements service.IServiceCustomer {
     }
 
     @Override
-    public void update(int customerId, Customer customer) {
+    public void update(Customer customer) {
+        repository.update(customer);
 
     }
 
@@ -28,5 +29,10 @@ public class ServiceCustomer implements service.IServiceCustomer {
     public void delete(int customerId) {
         repository.delete(customerId);
 
+    }
+
+    @Override
+    public Customer findById(int id) {
+        return repository.findById(id);
     }
 }
