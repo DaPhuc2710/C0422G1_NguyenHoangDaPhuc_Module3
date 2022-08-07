@@ -16,6 +16,7 @@
 <html>
 <head>
     <title>Trang thêm nhân viên mới</title>
+
 </head>
 <body>
 <h1 class="text-center">Thêm nhân viên mới</h1>

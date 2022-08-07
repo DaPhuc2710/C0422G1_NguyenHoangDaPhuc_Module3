@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>Trang chỉnh sửa khách hàng </title>
+
 </head>
 <body>
 <h1 class="text-center">Chỉnh sửa khách hàng </h1>

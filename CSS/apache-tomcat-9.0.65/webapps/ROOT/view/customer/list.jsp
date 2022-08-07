@@ -16,6 +16,7 @@
 <html>
 <head>
     <title>Trang khách hàng</title>
+
 </head>
 <body>
 <div class="row mt-3">
@@ -115,11 +116,7 @@
     function xoa(id){
         document.getElementById("deleteId").value=id;
         document.getElementById("confirm").innerHTML= '<a href="/customer?action=delete&id='+id+'">Yes</a>';
-
     }
-
-
-
 </script>
 </html>
 

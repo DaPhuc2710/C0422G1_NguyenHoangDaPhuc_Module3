@@ -1,8 +1,10 @@
 package model;
 
+import java.io.PrintWriter;
+
 public class CustomerTypeTable {
-    int customerCodeType;
-    String typeCustomerName;
+    private int customerCodeType;
+    private String typeCustomerName;
 
     public CustomerTypeTable() {
 

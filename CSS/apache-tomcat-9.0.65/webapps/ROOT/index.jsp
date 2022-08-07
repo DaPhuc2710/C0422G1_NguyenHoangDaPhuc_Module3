@@ -13,13 +13,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <style>
-
-
     body {
-        background-color: cyan;
-        background-repeat: no-repeat;
-        background-position: right top;
-        background-attachment: fixed;
+        background: #060841;
     }
 </style>
 <html>
@@ -94,10 +89,9 @@
             <div class="clearfix col-lg-6">
                 <div class="row">
                     <div class="col-6">
-                        <h4 style="color: #ffcd39">
+                        <h4 style="color: lightgoldenrodyellow">
                             KHU NGHỈ DƯỠNG ĐẲNG CẤP THẾ GIỚI, FURAMA ĐÀ NẴNG, NỔI TIẾNG LÀ KHU NGHỈ DƯỠNG ẨM THỰC TẠI
-                            VIỆT
-                            NAM.
+                            VIỆT NAM.
                         </h4>
                     </div>
                     <div class="col-6">
@@ -108,8 +102,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <p>CÁC LOẠI PHÒNG</p>
-                    <p>
+                    <p class="text-light">CÁC LOẠI PHÒNG</p>
+                    <p class="text-light">
                         Khu nghỉ dưỡng có 196 phòng được thiết kế theo phong cách truyền thống Việt Nam kết hợp với
                         phong
                         cách Pháp, 2 tòa nhà 4 tầng có hướng nhìn ra biển, nhìn ra hồ bơi trong xanh và những khu vườn
@@ -121,7 +115,7 @@
                         lớp tập yoga và Thái Cực Quyền trên bãi biển.
                     </p>
 
-                    <p>
+                    <p class="text-light">
                         Hướng ra bãi biển Đà Nẵng trải dài cát trắng, Furama Resort Đà Nẵng là cửa ngõ đến với 3 di sản
                         văn
                         hoá thế giới: Hội An (20 phút), Mỹ Sơn (90 phút) và Huế (2 tiếng. 196 phòng hạng sang cùng với

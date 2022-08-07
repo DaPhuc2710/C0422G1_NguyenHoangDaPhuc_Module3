@@ -15,10 +15,11 @@
 <html>
 <head>
     <title>Trang thêm khách hàng mới</title>
+
 </head>
 <body>
 <h1 class="text-center">Thêm khách hàng mới</h1>
-<form class="m-auto w-25" method="post" action="/customer?action=add">
+<form class="container-fluid w-25 shadow" method="post" action="/customer?action=add">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Họ tên</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">

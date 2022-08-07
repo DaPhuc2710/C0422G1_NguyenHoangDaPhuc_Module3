@@ -35,8 +35,8 @@
 </div>
 <div class="col-1"></div>
 <div class="row mt-3 container-fluid">
-    <h3>Liên hệ</h3>
-    <p>103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son District, Danang City, Vietnam
+    <h3 class="text-warning">Liên hệ</h3>
+    <p class="text-warning">103 - 105 Vo Nguyen Giap Street, Khue My Ward, Ngu Hanh Son District, Danang City, Vietnam
         Tel.: 84-236-3847 333/888 * Fax: 84-236-3847 666
         Email: reservation@furamavietnam.com * www.furamavietnam.com GDS Codes: Amadeus-GD DADFUR, Galileo/Apollo-GD
         16236, Sabre-GD 032771, Worldspan- GD DADFU</p>
