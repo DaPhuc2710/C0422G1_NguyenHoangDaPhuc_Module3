@@ -32,4 +32,9 @@ public class ServiceSerClass implements IServiceSerClass {
     public ServicesClass findById(int servicesId) {
         return iServicesRepository.findById(servicesId);
     }
+
+    @Override
+    public List<ServicesClass> search(String name) {
+        return iServicesRepository.search(name);
+    }
 }

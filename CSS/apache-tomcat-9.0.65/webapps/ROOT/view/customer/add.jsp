@@ -22,11 +22,16 @@
 <form class="container-fluid w-25 shadow" method="post" action="/customer?action=add">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Họ tên</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name"
+               value="${customer.name}">
+        <p class="text-warning">${errors.get('name')}</p>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail2" class="form-label">Ngày sinh </label>
-        <input type="date" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="dOfB">
+        <input type="date" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="dOfB"
+        >
+        <%--        value="${customer.dOfB}"--%>
+        <%--        <p class="text-warning">${errors.get('dOfB')}</p>--%>
     </div>
     <div class="mb-3">
         <label class="form-label">Giới tính</label>
@@ -37,15 +42,21 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail3" class="form-label">Số CMND </label>
-        <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" name="CMND">
+        <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" name="CMND"
+               value="${customer.CMND}">
+        <p class="text-warning">${errors.get('CMND')}</p>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail4" class="form-label">Số ĐT </label>
-        <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" name="telephone">
+        <input type="text" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" name="telephone"
+               value="${customer.telephone}">
+        <p class="text-warning">${errors.get('telephone')}</p>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail5" class="form-label">Email </label>
-        <input type="email" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" name="email">
+        <input type="text" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" name="email"
+               value="${customer.email}">
+        <p class="text-warning">${errors.get('email')}</p>
     </div>
     <div class="mb-3">
         <label class="form-label">Loại khách </label>
@@ -59,7 +70,9 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail6" class="form-label">Địa chỉ </label>
-        <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" name="address" >
+        <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" name="address"
+               value="${customer.address}">
+        <p class="text-warning">${errors.get('address')}</p>
     </div>
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>

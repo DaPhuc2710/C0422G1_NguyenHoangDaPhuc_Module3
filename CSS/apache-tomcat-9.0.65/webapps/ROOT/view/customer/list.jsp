@@ -13,17 +13,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<link rel="stylesheet" href="view/bootstrap-5.0.2-dist/css/bootstrap.css">
+<link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css" />
 <html>
 <head>
     <title>Trang khách hàng</title>
 
 </head>
 <body>
+<form class="d-flex container-fluid mt-3 w-50" action="/customer" method="get">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" hidden name="action" value="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name">
+    <button class="btn btn-outline-success">Search</button>
+</form>
+
 <div class="row mt-3">
     <div>
-        <table class="table">
+        <table class="table table-striped table-bordered" style="width: 100%" id="tableCustomer">
             <thead>
             <tr>
+                <th scope="col">STT</th>
                 <th scope="col">Mã khách hàng</th>
                 <th scope="col">Tên Loại khách hàng</th>
                 <th scope="col">Họ và tên</th>
@@ -38,8 +47,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="customer" items="${customer}">
+            <c:forEach var="customer" items="${customer}" varStatus="STT">
                 <tr>
+                    <td>${STT.count}</td>
                     <td>${customer.customerId}</td>
                     <c:forEach var="customerTypes" items="${customerTypes}">
                         <c:if test="${customerTypes.customerCodeType==customer.customerCodeType}">
@@ -61,7 +71,8 @@
                     <td>${customer.email}</td>
                     <td>${customer.address}</td>
                     <td>
-                        <button onclick="xoa('${customer.customerId}')" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button onclick="xoa('${customer.customerId}')" type="button" class="btn btn-primary"
+                                data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-trash" viewBox="0 0 16 16">
@@ -72,7 +83,8 @@
                         </button>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="/customer?action=update&id=${customer.customerId}" role="button">
+                        <a class="btn btn-primary" href="/customer?action=update&id=${customer.customerId}"
+                           role="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-pen"
                                  viewBox="0 0 16 16">
@@ -88,35 +100,48 @@
 </div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" name="deleteId" id="deleteId">
-                    Bạn có chắc là xóa khách hàng này không ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
-                    </button>
-                    <button id="confirm" type="submit" class="btn btn-primary"></button>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="deleteId" id="deleteId">
+                Bạn có chắc là xóa khách hàng này không ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No
+                </button>
+                <button id="confirm" type="submit" class="btn btn-primary"></button>
             </div>
         </div>
     </div>
+</div>
 
 <%@include file="/view/include/footer.jsp" %>
 </body>
 <script>
-    function xoa(id){
-        document.getElementById("deleteId").value=id;
-        document.getElementById("confirm").innerHTML= '<a href="/customer?action=delete&id='+id+'">Yes</a>';
+    function xoa(id) {
+        document.getElementById("deleteId").value = id;
+        document.getElementById("confirm").innerHTML = '<a href="/customer?action=delete&id=' + id + '">Yes</a>';
     }
+</script>
+</script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tableCustomer').dataTable( {
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        } );
+    } );
 </script>
 </html>
 

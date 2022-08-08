@@ -1,22 +1,22 @@
 package model;
 
-import java.time.LocalDate;
+
 
 public class Customer {
     private int customerId;
-    private int customerCodeType;
+    private String customerCodeType;
     private String name;
     private String dOfB;
     private boolean gender;
-    private int CMND;
-    private int telephone;
+    private String CMND;
+    private String telephone;
     private String email;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(int customerId, int customerCodeType, String name, String dOfB, boolean gender, int CMND, int telephone, String email, String address) {
+    public Customer(int customerId, String customerCodeType, String name, String dOfB, boolean gender, String CMND, String telephone, String email, String address) {
         this.customerId = customerId;
         this.customerCodeType = customerCodeType;
         this.name = name;
@@ -28,7 +28,7 @@ public class Customer {
         this.address = address;
     }
 
-    public Customer(int customerCodeType, String name, String dOfB, boolean gender, int CMND, int telephone, String email, String address) {
+    public Customer(String customerCodeType, String name, String dOfB, boolean gender, String CMND, String telephone, String email, String address) {
         this.customerCodeType = customerCodeType;
         this.name = name;
         this.dOfB = dOfB;
@@ -47,11 +47,11 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public int getCustomerCodeType() {
+    public String getCustomerCodeType() {
         return customerCodeType;
     }
 
-    public void setCustomerCodeType(int customerCodeType) {
+    public void setCustomerCodeType(String customerCodeType) {
         this.customerCodeType = customerCodeType;
     }
 
@@ -79,19 +79,19 @@ public class Customer {
         this.gender = gender;
     }
 
-    public int getCMND() {
+    public String getCMND() {
         return CMND;
     }
 
-    public void setCMND(int CMND) {
+    public void setCMND(String CMND) {
         this.CMND = CMND;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

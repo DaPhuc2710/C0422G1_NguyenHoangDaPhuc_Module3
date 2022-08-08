@@ -10,4 +10,6 @@ public interface IServicesRepository {
     void update( ServicesClass servicesClass);
     void delete(int servicesId);
     ServicesClass findById(int servicesId);
+    List<ServicesClass>search(String name);
+
 }

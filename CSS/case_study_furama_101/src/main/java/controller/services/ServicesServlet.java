@@ -30,6 +30,9 @@ public class ServicesServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "search":
+                showSearch(request, response);
+                break;
             case "add":
                 showAddForm(request, response);
                 break;
@@ -43,6 +46,7 @@ public class ServicesServlet extends HttpServlet {
                 showListServices(request, response);
         }
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -59,8 +63,27 @@ public class ServicesServlet extends HttpServlet {
         }
     }
 
+    private void showSearch(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        List<ServicesClass> servicesClassList = iServiceSerClass.search(name);
+        List<TypeOfServicesClass> typeOfServicesClassList = iServiceTypeOfSer.findAll();
+        List<RentTypeCodeClass> rentTypeCodeClassList = iServiceRentTypeCodeClass.findAll();
+        request.setAttribute("services", servicesClassList);
+        request.setAttribute("typeOfServices", typeOfServicesClassList);
+        request.setAttribute("rentTypes", rentTypeCodeClassList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/list.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private void saveUpdateForm(HttpServletRequest request, HttpServletResponse response) {
-        int servicesId =Integer.parseInt(request.getParameter("servicesId"));
+        int servicesId = Integer.parseInt(request.getParameter("servicesId"));
         String name = request.getParameter("name");
         double area = Double.parseDouble(request.getParameter("area"));
         double cost = Double.parseDouble(request.getParameter("cost"));
@@ -72,21 +95,21 @@ public class ServicesServlet extends HttpServlet {
         double poolArea = Double.parseDouble(request.getParameter("poolArea"));
         int floor = Integer.parseInt(request.getParameter("floor"));
         String extraServices = request.getParameter("extraServices");
-        iServiceSerClass.update(new ServicesClass(servicesId,name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices));
+        iServiceSerClass.update(new ServicesClass(servicesId, name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices));
         showListServices(request, response);
     }
 
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
-        int servicesId =Integer.parseInt(request.getParameter("id"));
-        ServicesClass servicesClass= iServiceSerClass.findById(servicesId);
-        List<TypeOfServicesClass> typeOfServicesClassList= iServiceTypeOfSer.findAll();
-        List<RentTypeCodeClass> rentTypeCodeClassList=iServiceRentTypeCodeClass.findAll();
-        request.setAttribute("rentTypeCodeClassList",rentTypeCodeClassList);
-        request.setAttribute("services",servicesClass);
-        request.setAttribute("typeOfServicesClassList",typeOfServicesClassList);
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/services/update.jsp");
+        int servicesId = Integer.parseInt(request.getParameter("id"));
+        ServicesClass servicesClass = iServiceSerClass.findById(servicesId);
+        List<TypeOfServicesClass> typeOfServicesClassList = iServiceTypeOfSer.findAll();
+        List<RentTypeCodeClass> rentTypeCodeClassList = iServiceRentTypeCodeClass.findAll();
+        request.setAttribute("rentTypeCodeClassList", rentTypeCodeClassList);
+        request.setAttribute("services", servicesClass);
+        request.setAttribute("typeOfServicesClassList", typeOfServicesClassList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/update.jsp");
         try {
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

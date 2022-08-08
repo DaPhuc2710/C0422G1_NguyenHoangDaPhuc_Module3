@@ -12,6 +12,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -34,10 +35,15 @@ public class CustomerServlet extends HttpServlet {
             case "update":
                 showUpdateForm(request, response);
                 break;
+                case "search":
+                showSearchList(request, response);
+                break;
             default:
                 showListCustomer(request, response);
         }
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,15 +61,32 @@ public class CustomerServlet extends HttpServlet {
         }
 
     }
+    private void showSearchList(HttpServletRequest request, HttpServletResponse response) {
+        String name =request.getParameter("name");
+        List<Customer> customerList=iServiceCustomer.search(name);
+        List<CustomerTypeTable> customerTypeTableList=iServiceType.findAll();
+        request.setAttribute("customer",customerList);
+        request.setAttribute("customerTypes",customerTypeTableList);
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/list.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     private void saveUpdateForm(HttpServletRequest request, HttpServletResponse response) {
         int customerId = Integer.parseInt(request.getParameter("customerId"));
-        int customerCodeType = Integer.parseInt(request.getParameter("type"));
+        String customerCodeType = request.getParameter("type");
         String name = request.getParameter("name");
         String dOfB = request.getParameter("dOfB");
         boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-        int CMND = Integer.parseInt(request.getParameter("CMND"));
-        int telephone = Integer.parseInt(request.getParameter("telephone"));
+        String CMND = request.getParameter("CMND");
+        String telephone = request.getParameter("telephone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         iServiceCustomer.update(new Customer(customerId,customerCodeType, name, dOfB, gender, CMND, telephone, email, address));
@@ -95,13 +118,28 @@ public class CustomerServlet extends HttpServlet {
         String name = request.getParameter("name");
         String dOfB = request.getParameter("dOfB");
         boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
-        int CMND = Integer.parseInt(request.getParameter("CMND"));
-        int telephone = Integer.parseInt(request.getParameter("telephone"));
+        String CMND = request.getParameter("CMND");
+        String telephone = request.getParameter("telephone");
         String email = request.getParameter("email");
-        int customerCodeType = Integer.parseInt(request.getParameter("type"));
+        String customerCodeType = request.getParameter("type");
         String address = request.getParameter("address");
-        iServiceCustomer.add(new Customer(customerCodeType, name, dOfB, gender, CMND, telephone, email, address));
-        showListCustomer(request, response);
+        Customer customer=new Customer(customerCodeType, name, dOfB, gender, CMND, telephone, email, address);
+        Map<String,String> errors= iServiceCustomer.check(customer);
+        if (errors.isEmpty()){
+            iServiceCustomer.add(customer);
+            showListCustomer(request, response);
+        }else {
+            RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/add.jsp");
+            request.setAttribute("errors",errors);
+            request.setAttribute("customer",customer);
+            try {
+                requestDispatcher.forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 

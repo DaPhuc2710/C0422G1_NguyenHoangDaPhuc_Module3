@@ -122,5 +122,6 @@
         }
     }
 </script>
+
 <%@include file="/view/include/footer.jsp" %>
 </body>
