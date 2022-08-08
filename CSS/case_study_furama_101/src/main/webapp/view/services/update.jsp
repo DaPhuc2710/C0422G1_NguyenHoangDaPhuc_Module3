@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/view/include/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -21,10 +22,18 @@
 <form class="m-auto w-25" method="post" action="/services?action=update">
     <p>Chọn dịch vụ cần add</p>
     <select onchange="services()" id="select" name="servicesTypeCode">
+        <c:forEach var="typeOfServicesClass" items="${typeOfServicesClassList}">
+            <c:if test="${services.servicesTypeCode==typeOfServicesClass.servicesTypeCode}">
+                <option value="${services.servicesTypeCode}">${typeOfServicesClass.servicesTypeName}</option>
+            </c:if>
+        </c:forEach>
+
+        <c:forEach var="typeOfServicesClass" items="${typeOfServicesClassList}">
+            <c:if test="${services.servicesTypeCode!=typeOfServicesClass.servicesTypeCode}">
+                <option value="${services.servicesTypeCode}">${typeOfServicesClass.servicesTypeName}</option>
+            </c:if>
+        </c:forEach>
         <option value="0">None</option>
-        <option value="2">House</option>
-        <option value="3">Room</option>
-        <option value="1">Villa</option>
     </select>
     <div class="mb-3">
         <label for="exampleInputEmail13" class="form-label">Mã dịch vụ</label>
@@ -48,12 +57,18 @@
     </div>
     <div class="mb-3">
         <label  class="form-label">Kiểu thuê</label>
-        <select  name="rentTypeCode" value="${services.rentTypeCode}">
+        <select  name="rentTypeCode">
+            <c:forEach var="rentTypeCodeClass" items="${rentTypeCodeClassList}">
+                <c:if test="${services.rentTypeCode==rentTypeCodeClass.rentTypeCode}">
+                    <option value="${services.rentTypeCode}"> ${rentTypeCodeClass.rentTypeName}</option>
+                </c:if>
+            </c:forEach>
+            <c:forEach var="rentTypeCodeClass" items="${rentTypeCodeClassList}">
+                <c:if test="${services.rentTypeCode!=rentTypeCodeClass.rentTypeCode}">
+                    <option value="${services.rentTypeCode}"> ${rentTypeCodeClass.rentTypeName}</option>
+                </c:if>
+            </c:forEach>
             <option value="0">None</option>
-            <option value="1">Year</option>
-            <option value="2">Month</option>
-            <option value="3">Day</option>
-            <option value="4">Hour</option>
         </select>
     </div>
     <div class="mb-3 " id="s1">

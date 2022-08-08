@@ -17,11 +17,11 @@ public class ServicesRepository implements IServicesRepository {
             + "values(?,?,?,?,?,?,?,?,?,?,?)";
     private final String DELETE = "delete from dich_vu where ma_dich_vu = ?";
     private final String FIND_BY_ID = "select * from dich_vu where ma_dich_vu = ?";
-//    private final String EDIT="update dich_vu set ten_dich_vu =?,dien_tich =?,chi_phi_thue =?,so_nguoi_toi_da =?,ma_kieu_thue =?,ma_loai_dich_vu =?,tieu_chuan_phong =?,mo_ta_tien_nghi_khach =?,dien_tich_ho_boi =?,so_tang =?,dich_vu_mien_phi_di_kem =? where ma_dich_vu = ?";
-private final String EDIT="update dich_vu set ten_dich_vu =?,dien_tich =?" +
-        ",chi_phi_thue =?, so_nguoi_toi_da =?, ma_kieu_thue =?, ma_loai_dich_vu =?," +
-        " tieu_chuan_phong =?,mo_ta_tien_nghi_khach =?,dien_tich_ho_boi =?,so_tang =?," +
-        "dich_vu_mien_phi_di_kem=? where ma_dich_vu=?";
+    private final String EDIT = "update dich_vu set ten_dich_vu =?,dien_tich =?" +
+            ",chi_phi_thue =?, so_nguoi_toi_da =?, ma_kieu_thue =?, ma_loai_dich_vu =?," +
+            " tieu_chuan_phong =?,mo_ta_tien_nghi_khach =?,dien_tich_ho_boi =?,so_tang =?," +
+            "dich_vu_mien_phi_di_kem=? where ma_dich_vu=?;";
+
     @Override
     public List<ServicesClass> findAll() {
         List<ServicesClass> servicesClasses = new ArrayList<>();
@@ -75,34 +75,21 @@ private final String EDIT="update dich_vu set ten_dich_vu =?,dien_tich =?" +
 
     @Override
     public void update(ServicesClass servicesClass) {
-        Connection connection= BaseRepository.getConnectDB();
+        Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement= connection.prepareStatement(EDIT);
-//            preparedStatement.setString(1, servicesClass.getName());
-//            preparedStatement.setString(2, String.valueOf(servicesClass.getArea()));
-//            preparedStatement.setDouble(3, servicesClass.getCost());
-//            preparedStatement.setInt(4, servicesClass.getMaxPeople());
-//            preparedStatement.setInt(5, servicesClass.getRentTypeCode());
-//            preparedStatement.setInt(6, servicesClass.getServicesTypeCode());
-//            preparedStatement.setString(7, servicesClass.getQuality());
-//            preparedStatement.setString(8, servicesClass.getDescription());
-//            preparedStatement.setDouble(9, servicesClass.getPoolArea());
-//            preparedStatement.setInt(10, servicesClass.getFloor());
-//            preparedStatement.setString(11, servicesClass.getExtraServices());
-//            preparedStatement.setInt(12, servicesClass.getServicesId());
-
-            preparedStatement.setString(1,servicesClass.getName());
+            PreparedStatement preparedStatement = connection.prepareStatement(EDIT);
+            preparedStatement.setString(1, servicesClass.getName());
             preparedStatement.setString(2, String.valueOf(servicesClass.getArea()));
-            preparedStatement.setDouble(3,servicesClass.getCost());
-            preparedStatement.setInt(4,servicesClass.getMaxPeople());
-            preparedStatement.setInt(5,servicesClass.getRentTypeCode());
-            preparedStatement.setInt(6,servicesClass.getServicesTypeCode());
-            preparedStatement.setString(7,servicesClass.getQuality());
-            preparedStatement.setString(8,servicesClass.getDescription());
-            preparedStatement.setDouble(9,servicesClass.getPoolArea());
-            preparedStatement.setInt(10,servicesClass.getFloor());
-            preparedStatement.setString(11,servicesClass.getExtraServices());
-            preparedStatement.setInt(12,servicesClass.getServicesId());
+            preparedStatement.setDouble(3, servicesClass.getCost());
+            preparedStatement.setInt(4, servicesClass.getMaxPeople());
+            preparedStatement.setInt(5, servicesClass.getRentTypeCode());
+            preparedStatement.setInt(6, servicesClass.getServicesTypeCode());
+            preparedStatement.setString(7, servicesClass.getQuality());
+            preparedStatement.setString(8, servicesClass.getDescription());
+            preparedStatement.setDouble(9, servicesClass.getPoolArea());
+            preparedStatement.setInt(10, servicesClass.getFloor());
+            preparedStatement.setString(11, servicesClass.getExtraServices());
+            preparedStatement.setInt(12, servicesClass.getServicesId());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

@@ -79,7 +79,11 @@ public class ServicesServlet extends HttpServlet {
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
         int servicesId =Integer.parseInt(request.getParameter("id"));
         ServicesClass servicesClass= iServiceSerClass.findById(servicesId);
+        List<TypeOfServicesClass> typeOfServicesClassList= iServiceTypeOfSer.findAll();
+        List<RentTypeCodeClass> rentTypeCodeClassList=iServiceRentTypeCodeClass.findAll();
+        request.setAttribute("rentTypeCodeClassList",rentTypeCodeClassList);
         request.setAttribute("services",servicesClass);
+        request.setAttribute("typeOfServicesClassList",typeOfServicesClassList);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/services/update.jsp");
         try {
             requestDispatcher.forward(request,response);
