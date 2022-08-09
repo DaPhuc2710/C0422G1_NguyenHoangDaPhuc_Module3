@@ -35,14 +35,13 @@ public class CustomerServlet extends HttpServlet {
             case "update":
                 showUpdateForm(request, response);
                 break;
-                case "search":
+            case "search":
                 showSearchList(request, response);
                 break;
             default:
                 showListCustomer(request, response);
         }
     }
-
 
 
     @Override
@@ -61,15 +60,16 @@ public class CustomerServlet extends HttpServlet {
         }
 
     }
+
     private void showSearchList(HttpServletRequest request, HttpServletResponse response) {
-        String name =request.getParameter("name");
-        List<Customer> customerList=iServiceCustomer.search(name);
-        List<CustomerTypeTable> customerTypeTableList=iServiceType.findAll();
-        request.setAttribute("customer",customerList);
-        request.setAttribute("customerTypes",customerTypeTableList);
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/list.jsp");
+        String name = request.getParameter("name");
+        List<Customer> customerList = iServiceCustomer.search(name);
+        List<CustomerTypeTable> customerTypeTableList = iServiceType.findAll();
+        request.setAttribute("customer", customerList);
+        request.setAttribute("customerTypes", customerTypeTableList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer/list.jsp");
         try {
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -89,14 +89,33 @@ public class CustomerServlet extends HttpServlet {
         String telephone = request.getParameter("telephone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        iServiceCustomer.update(new Customer(customerId,customerCodeType, name, dOfB, gender, CMND, telephone, email, address));
-        showListCustomer(request, response);
+        Customer customer = new Customer(customerId, customerCodeType, name, dOfB, gender, CMND, telephone, email, address);
+        Map<String, String> errors = iServiceCustomer.check(customer);
+        if (errors.isEmpty()) {
+            iServiceCustomer.update(customer);
+            showListCustomer(request, response);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer/update.jsp");
+            request.setAttribute("errors", errors);
+            request.setAttribute("customer", customer);
+            List<CustomerTypeTable> customerTypeTables=iServiceType.findAll();
+            request.setAttribute("customerTypeTables",customerTypeTables);
+            try {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Customer customer = iServiceCustomer.findById(id);
-        request.setAttribute("customer",customer);
+       List<CustomerTypeTable> customerTypeTables=iServiceType.findAll();
+        request.setAttribute("customerTypeTables",customerTypeTables);
+        request.setAttribute("customer", customer);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer/update.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -123,17 +142,19 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String customerCodeType = request.getParameter("type");
         String address = request.getParameter("address");
-        Customer customer=new Customer(customerCodeType, name, dOfB, gender, CMND, telephone, email, address);
-        Map<String,String> errors= iServiceCustomer.check(customer);
-        if (errors.isEmpty()){
+        Customer customer = new Customer(customerCodeType, name, dOfB, gender, CMND, telephone, email, address);
+        Map<String, String> errors = iServiceCustomer.check(customer);
+        if (errors.isEmpty()) {
             iServiceCustomer.add(customer);
             showListCustomer(request, response);
-        }else {
-            RequestDispatcher requestDispatcher= request.getRequestDispatcher("/view/customer/add.jsp");
-            request.setAttribute("errors",errors);
-            request.setAttribute("customer",customer);
+            List<CustomerTypeTable> customerTypeTables=iServiceType.findAll();
+            request.setAttribute("customerTypeTables",customerTypeTables);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/customer/add.jsp");
+            request.setAttribute("errors", errors);
+            request.setAttribute("customer", customer);
             try {
-                requestDispatcher.forward(request,response);
+                requestDispatcher.forward(request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
             } catch (IOException e) {

@@ -22,50 +22,60 @@
 <form class="m-auto w-25" method="post" action="/services?action=update">
     <p>Chọn dịch vụ cần add</p>
     <select onchange="services()" id="select" name="servicesTypeCode">
-        <c:forEach var="typeOfServicesClass" items="${typeOfServicesClassList}">
-            <c:if test="${services.servicesTypeCode==typeOfServicesClass.servicesTypeCode}">
-                <option value="${services.servicesTypeCode}">${typeOfServicesClass.servicesTypeName}</option>
+        <c:forEach var="typeOfServices" items="${typeOfServices}">
+            <c:if test="${services.servicesTypeCode==typeOfServices.servicesTypeCode}">
+                <option value="${services.servicesTypeCode}">${typeOfServices.servicesTypeName}</option>
             </c:if>
         </c:forEach>
 
-        <c:forEach var="typeOfServicesClass" items="${typeOfServicesClassList}">
-            <c:if test="${services.servicesTypeCode!=typeOfServicesClass.servicesTypeCode}">
-                <option value="${services.servicesTypeCode}">${typeOfServicesClass.servicesTypeName}</option>
+        <c:forEach var="typeOfServices" items="${typeOfServices}">
+            <c:if test="${services.servicesTypeCode!=typeOfServices.servicesTypeCode}">
+                <option value="${services.servicesTypeCode}">${typeOfServices.servicesTypeName}</option>
             </c:if>
         </c:forEach>
         <option value="0">None</option>
     </select>
     <div class="mb-3">
         <label for="exampleInputEmail13" class="form-label">Mã dịch vụ</label>
-        <input type="text" class="form-control" id="exampleInputEmail13" aria-describedby="emailHelp" name="servicesId" value="${services.servicesId}">
+        <input type="text" class="form-control" id="exampleInputEmail13" aria-describedby="emailHelp" name="servicesId"
+               value="${services.servicesId}">
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail111" class="form-label">Tên dịch vụ</label>
-        <input type="text" class="form-control" id="exampleInputEmail111" aria-describedby="emailHelp" name="name" value="${services.name}">
+        <input type="text" class="form-control" id="exampleInputEmail111" aria-describedby="emailHelp" name="name"
+               value="${services.name}">
+        <p class="text-warning">${errors.get('name')}</p>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Diện tích sử dụng</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="area" value="${services.area}">
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="area"
+               value="${services.area}">
+        <p class="text-warning">${errors.get('area')}</p>
+
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail2" class="form-label">Chi phí thuê </label>
-        <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"name="cost" value="${services.cost}">
+        <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="cost"
+               value="${services.cost}">
+        <p class="text-warning">${errors.get('cost')}</p>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail3" class="form-label">Số lượng người tối đa </label>
-        <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp"name="maxPeople" value="${services.maxPeople}">
+        <input type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" name="maxPeople"
+               value="${services.maxPeople}">
+        <p class="text-warning">${errors.get('maxPeople')}</p>
     </div>
     <div class="mb-3">
-        <label  class="form-label">Kiểu thuê</label>
-        <select  name="rentTypeCode">
-            <c:forEach var="rentTypeCodeClass" items="${rentTypeCodeClassList}">
-                <c:if test="${services.rentTypeCode==rentTypeCodeClass.rentTypeCode}">
-                    <option value="${services.rentTypeCode}"> ${rentTypeCodeClass.rentTypeName}</option>
+        <label class="form-label">Kiểu thuê</label>
+        <select name="rentTypeCode">
+            <c:forEach var="rentTypes" items="${rentTypes}">
+                <c:if test="${services.rentTypeCode==rentTypes.rentTypeCode}">
+                    <option value="${services.rentTypeCode}"> ${rentTypes.rentTypeName}</option>
                 </c:if>
             </c:forEach>
-            <c:forEach var="rentTypeCodeClass" items="${rentTypeCodeClassList}">
-                <c:if test="${services.rentTypeCode!=rentTypeCodeClass.rentTypeCode}">
-                    <option value="${services.rentTypeCode}"> ${rentTypeCodeClass.rentTypeName}</option>
+            <c:forEach var="rentTypes" items="${rentTypes}">
+                <c:if test="${services.rentTypeCode!=rentTypes.rentTypeCode}">
+                    <option value="${services.rentTypeCode}"> ${rentTypes.rentTypeName}</option>
                 </c:if>
             </c:forEach>
             <option value="0">None</option>
@@ -73,23 +83,30 @@
     </div>
     <div class="mb-3 " id="s1">
         <label for="exampleInputEmail5" class="form-label">Dịch vụ miễn phí đi kèm </label>
-        <input type="text" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" name="extraServices" value="${services.extraServices}">
+        <input type="text" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp"
+               name="extraServices" value="${services.extraServices}">
     </div>
     <div class="mb-3" id="s2">
         <label for="exampleInputEmail8" class="form-label">Tiêu chuẩn phòng </label>
-        <input type="text" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" name="quality"  value="${services.quality}">
+        <input type="text" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" name="quality"
+               value="${services.quality}">
     </div>
     <div class="mb-3" id="s3">
         <label for="exampleInputEmail7" class="form-label">Mô tả tiện nghi khác </label>
-        <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp" name="description"  value="${services.description}">
+        <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp" name="description"
+               value="${services.description}">
     </div>
     <div class="mb-3" id="s4">
         <label for="exampleInputEmail9" class="form-label">Diện tích hồ bơi </label>
-        <input type="text" class="form-control" id="exampleInputEmail9" aria-describedby="emailHelp" name="poolArea"  value="${services.poolArea}">
+        <input type="text" class="form-control" id="exampleInputEmail9" aria-describedby="emailHelp" name="poolArea"
+               value="${services.poolArea}">
+        <p class="text-warning">${errors.get('poolArea')}</p>
     </div>
     <div class="mb-3" id="s5">
         <label for="exampleInputEmail10" class="form-label">Số tầng </label>
-        <input type="text" class="form-control" id="exampleInputEmail10" aria-describedby="emailHelp" name="floor" value="${services.floor}">
+        <input type="text" class="form-control" id="exampleInputEmail10" aria-describedby="emailHelp" name="floor"
+               value="${services.floor}">
+        <p class="text-warning">${errors.get('floor')}</p>
     </div>
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>

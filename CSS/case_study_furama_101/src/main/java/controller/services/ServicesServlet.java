@@ -1,5 +1,6 @@
 package controller.services;
 
+import model.CustomerTypeTable;
 import model.RentTypeCodeClass;
 import model.ServicesClass;
 import model.TypeOfServicesClass;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "ServicesServlet", urlPatterns = "/services")
 public class ServicesServlet extends HttpServlet {
@@ -95,8 +97,27 @@ public class ServicesServlet extends HttpServlet {
         double poolArea = Double.parseDouble(request.getParameter("poolArea"));
         int floor = Integer.parseInt(request.getParameter("floor"));
         String extraServices = request.getParameter("extraServices");
-        iServiceSerClass.update(new ServicesClass(servicesId, name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices));
-        showListServices(request, response);
+       ServicesClass servicesClass=new ServicesClass(servicesId, name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices);
+        Map<String, String> errors = iServiceSerClass.check(servicesClass);
+        if (errors.isEmpty()) {
+            iServiceSerClass.update(servicesClass);
+            showListServices(request, response);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/update.jsp");
+            request.setAttribute("errors", errors);
+            request.setAttribute("services", servicesClass);
+            List<TypeOfServicesClass> typeOfServicesClassList=iServiceTypeOfSer.findAll();
+            List<RentTypeCodeClass> rentTypeCodeClassList = iServiceRentTypeCodeClass.findAll();
+            request.setAttribute("typeOfServices",typeOfServicesClassList);
+            request.setAttribute("rentTypes", rentTypeCodeClassList);
+            try {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
@@ -104,9 +125,9 @@ public class ServicesServlet extends HttpServlet {
         ServicesClass servicesClass = iServiceSerClass.findById(servicesId);
         List<TypeOfServicesClass> typeOfServicesClassList = iServiceTypeOfSer.findAll();
         List<RentTypeCodeClass> rentTypeCodeClassList = iServiceRentTypeCodeClass.findAll();
-        request.setAttribute("rentTypeCodeClassList", rentTypeCodeClassList);
+        request.setAttribute("rentTypes", rentTypeCodeClassList);
         request.setAttribute("services", servicesClass);
-        request.setAttribute("typeOfServicesClassList", typeOfServicesClassList);
+        request.setAttribute("typeOfServices", typeOfServicesClassList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/update.jsp");
         try {
             requestDispatcher.forward(request, response);
@@ -129,13 +150,33 @@ public class ServicesServlet extends HttpServlet {
         double poolArea = Double.parseDouble(request.getParameter("poolArea"));
         int floor = Integer.parseInt(request.getParameter("floor"));
         String extraServices = request.getParameter("extraServices");
-        iServiceSerClass.add(new ServicesClass(name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices));
-        showListServices(request, response);
+        ServicesClass servicesClass=new ServicesClass(name, area, cost, maxPeople, rentTypeCode, servicesTypeCode, quality, description, poolArea, floor, extraServices);
+        Map<String, String> errors = iServiceSerClass.check(servicesClass);
+        if (errors.isEmpty()) {
+            iServiceSerClass.add(servicesClass);
+            showListServices(request, response);
+        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/add.jsp");
+            request.setAttribute("errors", errors);
+            request.setAttribute("services", servicesClass);
+            List<TypeOfServicesClass> typeOfServicesClassList=iServiceTypeOfSer.findAll();
+            List<RentTypeCodeClass> rentTypeCodeClassList = iServiceRentTypeCodeClass.findAll();
+            request.setAttribute("typeOfServices",typeOfServicesClassList);
+            request.setAttribute("rentTypes", rentTypeCodeClassList);
+            try {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void showAddForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view/services/add.jsp");
         try {
+
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
